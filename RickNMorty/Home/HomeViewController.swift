@@ -8,7 +8,8 @@
 import UIKit
 
 protocol HomeDisplayLogic: AnyObject {
-    
+    func displayCharacters(viewModels: [Home.Case.ViewModel])
+    func displayErrorMessage(_ message: String)
 }
 
 final class HomeViewController: UIViewController {
@@ -19,12 +20,14 @@ final class HomeViewController: UIViewController {
 
     var interactor: HomeBusinessLogic?
     var router: (HomeRoutingLogic & HomeDataPassing)?
-    
+    private var viewModel: [Home.Case.ViewModel]?
+    private let characterCellIdentifier = "characterCell"
     //MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        interactor?.loadData()
     }
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -55,6 +58,7 @@ final class HomeViewController: UIViewController {
     private func setupView() {
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(UINib(nibName: "CharacterTableViewCell", bundle: nil), forCellReuseIdentifier: characterCellIdentifier)
     }
 }
 
@@ -62,15 +66,26 @@ final class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return viewModel?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: characterCellIdentifier) as? CharacterTableViewCell else { return UITableViewCell() }
+        guard let viewModel = viewModel?[indexPath.row] else { return cell }
+        cell.characterNameLabel.text = viewModel.name
+        return cell
     }
 }
 
     //MARK: - DisplayLogic
 extension HomeViewController: HomeDisplayLogic {
-    
+    func displayCharacters(viewModels: [Home.Case.ViewModel]) {
+        DispatchQueue.main.async { [weak self] in
+            self?.viewModel = viewModels
+            self?.tableView.reloadData()
+        }
+    }
+    func displayErrorMessage(_ message: String) {
+        
+    }
 }
