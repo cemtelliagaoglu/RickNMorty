@@ -23,6 +23,8 @@
 		84A4ACE62A81069300A08A4A /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4ACE52A81069300A08A4A /* RequestMethod.swift */; };
 		84A4ACE82A8106A600A08A4A /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4ACE72A8106A600A08A4A /* RequestError.swift */; };
 		84A4ACEA2A810FD100A08A4A /* CharacterEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4ACE92A810FD100A08A4A /* CharacterEndpoint.swift */; };
+		84A4ACEE2A811A3300A08A4A /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4ACEC2A811A3300A08A4A /* CharacterTableViewCell.swift */; };
+		84A4ACEF2A811A3300A08A4A /* CharacterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A4ACED2A811A3300A08A4A /* CharacterTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		84A4ACE52A81069300A08A4A /* RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
 		84A4ACE72A8106A600A08A4A /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		84A4ACE92A810FD100A08A4A /* CharacterEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEndpoint.swift; sourceTree = "<group>"; };
+		84A4ACEC2A811A3300A08A4A /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
+		84A4ACED2A811A3300A08A4A /* CharacterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,7 @@
 		84A4ACCC2A80FEA300A08A4A /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				84A4ACEB2A811A1600A08A4A /* TableView */,
 				84A4ACCD2A80FEBA00A08A4A /* Home.storyboard */,
 				84A4ACCE2A80FEBA00A08A4A /* HomeViewController.swift */,
 				84A4ACCF2A80FEBA00A08A4A /* HomePresenter.swift */,
@@ -151,6 +156,15 @@
 				84A4ACE92A810FD100A08A4A /* CharacterEndpoint.swift */,
 			);
 			path = Endpoint;
+			sourceTree = "<group>";
+		};
+		84A4ACEB2A811A1600A08A4A /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				84A4ACEC2A811A3300A08A4A /* CharacterTableViewCell.swift */,
+				84A4ACED2A811A3300A08A4A /* CharacterTableViewCell.xib */,
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,6 +228,7 @@
 				84A4ACC42A80FE1E00A08A4A /* LaunchScreen.storyboard in Resources */,
 				84A4ACC12A80FE1E00A08A4A /* Assets.xcassets in Resources */,
 				84A4ACD42A80FEBA00A08A4A /* Home.storyboard in Resources */,
+				84A4ACEF2A811A3300A08A4A /* CharacterTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84A4ACB82A80FE1D00A08A4A /* AppDelegate.swift in Sources */,
+				84A4ACEE2A811A3300A08A4A /* CharacterTableViewCell.swift in Sources */,
 				84A4ACBA2A80FE1D00A08A4A /* SceneDelegate.swift in Sources */,
 				84A4ACD72A80FEBA00A08A4A /* HomeInteractor.swift in Sources */,
 				84A4ACD62A80FEBA00A08A4A /* HomePresenter.swift in Sources */,
