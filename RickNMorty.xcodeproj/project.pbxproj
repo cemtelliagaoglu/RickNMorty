@@ -18,6 +18,10 @@
 		84A4ACD82A80FEBA00A08A4A /* HomeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4ACD12A80FEBA00A08A4A /* HomeModels.swift */; };
 		84A4ACD92A80FEBA00A08A4A /* HomeWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4ACD22A80FEBA00A08A4A /* HomeWorker.swift */; };
 		84A4ACDA2A80FEBA00A08A4A /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4ACD32A80FEBA00A08A4A /* HomeRouter.swift */; };
+		84A4ACE02A81064F00A08A4A /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4ACDF2A81064F00A08A4A /* HTTPClient.swift */; };
+		84A4ACE42A81067400A08A4A /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4ACE32A81067400A08A4A /* Endpoint.swift */; };
+		84A4ACE62A81069300A08A4A /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4ACE52A81069300A08A4A /* RequestMethod.swift */; };
+		84A4ACE82A8106A600A08A4A /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4ACE72A8106A600A08A4A /* RequestError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +38,10 @@
 		84A4ACD12A80FEBA00A08A4A /* HomeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModels.swift; sourceTree = "<group>"; };
 		84A4ACD22A80FEBA00A08A4A /* HomeWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWorker.swift; sourceTree = "<group>"; };
 		84A4ACD32A80FEBA00A08A4A /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		84A4ACDF2A81064F00A08A4A /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		84A4ACE32A81067400A08A4A /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		84A4ACE52A81069300A08A4A /* RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
+		84A4ACE72A8106A600A08A4A /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,8 +75,10 @@
 			isa = PBXGroup;
 			children = (
 				84A4ACDB2A81032900A08A4A /* Application */,
+				84A4ACDE2A81061800A08A4A /* Networking */,
 				84A4ACCB2A80FE9900A08A4A /* Scenes */,
 				84A4ACDC2A81035600A08A4A /* Resources */,
+				84A4ACC52A80FE1E00A08A4A /* Info.plist */,
 			);
 			path = RickNMorty;
 			sourceTree = "<group>";
@@ -109,9 +119,35 @@
 			isa = PBXGroup;
 			children = (
 				84A4ACC02A80FE1E00A08A4A /* Assets.xcassets */,
-				84A4ACC52A80FE1E00A08A4A /* Info.plist */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		84A4ACDE2A81061800A08A4A /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				84A4ACE52A81069300A08A4A /* RequestMethod.swift */,
+				84A4ACE72A8106A600A08A4A /* RequestError.swift */,
+				84A4ACDF2A81064F00A08A4A /* HTTPClient.swift */,
+				84A4ACE22A81066A00A08A4A /* Endpoint */,
+				84A4ACE12A81066400A08A4A /* Responses */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		84A4ACE12A81066400A08A4A /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		84A4ACE22A81066A00A08A4A /* Endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				84A4ACE32A81067400A08A4A /* Endpoint.swift */,
+			);
+			path = Endpoint;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,7 +225,11 @@
 				84A4ACBA2A80FE1D00A08A4A /* SceneDelegate.swift in Sources */,
 				84A4ACD72A80FEBA00A08A4A /* HomeInteractor.swift in Sources */,
 				84A4ACD62A80FEBA00A08A4A /* HomePresenter.swift in Sources */,
+				84A4ACE42A81067400A08A4A /* Endpoint.swift in Sources */,
+				84A4ACE62A81069300A08A4A /* RequestMethod.swift in Sources */,
 				84A4ACD52A80FEBA00A08A4A /* HomeViewController.swift in Sources */,
+				84A4ACE02A81064F00A08A4A /* HTTPClient.swift in Sources */,
+				84A4ACE82A8106A600A08A4A /* RequestError.swift in Sources */,
 				84A4ACD92A80FEBA00A08A4A /* HomeWorker.swift in Sources */,
 				84A4ACDA2A80FEBA00A08A4A /* HomeRouter.swift in Sources */,
 				84A4ACD82A80FEBA00A08A4A /* HomeModels.swift in Sources */,
@@ -336,7 +376,7 @@
 				INFOPLIST_FILE = RickNMorty/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Home;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -364,7 +404,7 @@
 				INFOPLIST_FILE = RickNMorty/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Home;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
