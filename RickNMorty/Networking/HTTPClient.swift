@@ -68,7 +68,6 @@ public extension HTTPClient {
         urlComponents.scheme = endpoint.scheme
         urlComponents.host = endpoint.host
         urlComponents.path = endpoint.path
-        urlComponents.port = endpoint.port
 
         if let queryItems = endpoint.queryItems {
             urlComponents.queryItems = queryItems
