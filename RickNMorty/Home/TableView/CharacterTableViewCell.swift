@@ -10,10 +10,21 @@ import UIKit
 class CharacterTableViewCell: UITableViewCell {
     @IBOutlet var characterImageView: UIImageView!
     @IBOutlet var characterNameLabel: UILabel!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+
+    var viewModel: Home.Case.ViewModel? {
+        didSet {
+            guard let viewModel else { return }
+            characterNameLabel.text = viewModel.name
+            characterImageView.downloadImage(from: viewModel.imageURLString) {
+                self.loadingIndicator.stopAnimating()
+            }
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        loadingIndicator.startAnimating()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
