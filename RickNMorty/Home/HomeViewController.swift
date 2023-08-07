@@ -72,7 +72,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: characterCellIdentifier) as? CharacterTableViewCell else { return UITableViewCell() }
         guard let viewModel = viewModel?[indexPath.row] else { return cell }
-        cell.characterNameLabel.text = viewModel.name
+        cell.viewModel = viewModel
         return cell
     }
 }
