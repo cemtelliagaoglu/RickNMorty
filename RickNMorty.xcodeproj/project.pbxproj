@@ -70,14 +70,11 @@
 		84A4ACB62A80FE1D00A08A4A /* RickNMorty */ = {
 			isa = PBXGroup;
 			children = (
-				84A4ACB72A80FE1D00A08A4A /* AppDelegate.swift */,
-				84A4ACB92A80FE1D00A08A4A /* SceneDelegate.swift */,
+				84A4ACDB2A81032900A08A4A /* Application */,
 				84A4ACBB2A80FE1D00A08A4A /* ViewController.swift */,
 				84A4ACCB2A80FE9900A08A4A /* Scenes */,
 				84A4ACBD2A80FE1D00A08A4A /* Main.storyboard */,
-				84A4ACC02A80FE1E00A08A4A /* Assets.xcassets */,
-				84A4ACC22A80FE1E00A08A4A /* LaunchScreen.storyboard */,
-				84A4ACC52A80FE1E00A08A4A /* Info.plist */,
+				84A4ACDC2A81035600A08A4A /* Resources */,
 			);
 			path = RickNMorty;
 			sourceTree = "<group>";
@@ -86,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				84A4ACCC2A80FEA300A08A4A /* Home */,
+				84A4ACC22A80FE1E00A08A4A /* LaunchScreen.storyboard */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -102,6 +100,24 @@
 				84A4ACD32A80FEBA00A08A4A /* HomeRouter.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		84A4ACDB2A81032900A08A4A /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				84A4ACB72A80FE1D00A08A4A /* AppDelegate.swift */,
+				84A4ACB92A80FE1D00A08A4A /* SceneDelegate.swift */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		84A4ACDC2A81035600A08A4A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				84A4ACC02A80FE1E00A08A4A /* Assets.xcassets */,
+				84A4ACC52A80FE1E00A08A4A /* Info.plist */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
