@@ -22,6 +22,7 @@
 		84A4ACE42A81067400A08A4A /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4ACE32A81067400A08A4A /* Endpoint.swift */; };
 		84A4ACE62A81069300A08A4A /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4ACE52A81069300A08A4A /* RequestMethod.swift */; };
 		84A4ACE82A8106A600A08A4A /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4ACE72A8106A600A08A4A /* RequestError.swift */; };
+		84A4ACEA2A810FD100A08A4A /* CharacterEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A4ACE92A810FD100A08A4A /* CharacterEndpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		84A4ACE32A81067400A08A4A /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		84A4ACE52A81069300A08A4A /* RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
 		84A4ACE72A8106A600A08A4A /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
+		84A4ACE92A810FD100A08A4A /* CharacterEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEndpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				84A4ACE32A81067400A08A4A /* Endpoint.swift */,
+				84A4ACE92A810FD100A08A4A /* CharacterEndpoint.swift */,
 			);
 			path = Endpoint;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				84A4ACD52A80FEBA00A08A4A /* HomeViewController.swift in Sources */,
 				84A4ACE02A81064F00A08A4A /* HTTPClient.swift in Sources */,
 				84A4ACE82A8106A600A08A4A /* RequestError.swift in Sources */,
+				84A4ACEA2A810FD100A08A4A /* CharacterEndpoint.swift in Sources */,
 				84A4ACD92A80FEBA00A08A4A /* HomeWorker.swift in Sources */,
 				84A4ACDA2A80FEBA00A08A4A /* HomeRouter.swift in Sources */,
 				84A4ACD82A80FEBA00A08A4A /* HomeModels.swift in Sources */,
