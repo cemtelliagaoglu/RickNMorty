@@ -12,12 +12,21 @@ protocol HomeDisplayLogic: AnyObject {
 }
 
 final class HomeViewController: UIViewController {
-    
+
+    //MARK: - Properties
+
+    @IBOutlet weak var tableView: UITableView!
+
     var interactor: HomeBusinessLogic?
     var router: (HomeRoutingLogic & HomeDataPassing)?
     
-    // MARK: Object lifecycle
-    
+    //MARK: - Lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupView()
+    }
+
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -28,7 +37,7 @@ final class HomeViewController: UIViewController {
         setup()
     }
     
-    // MARK: Setup
+    //MARK: - Methods
     
     private func setup() {
         let viewController = self
@@ -42,8 +51,26 @@ final class HomeViewController: UIViewController {
         router.viewController = viewController
         router.dataStore = interactor
     }
+
+    private func setupView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
 }
 
+    //MARK: - TableView
+
+extension HomeViewController: UITableViewDataSource,UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+}
+
+    //MARK: - DisplayLogic
 extension HomeViewController: HomeDisplayLogic {
     
 }
