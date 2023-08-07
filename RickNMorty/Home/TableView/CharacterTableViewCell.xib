@@ -51,6 +51,7 @@
             <connections>
                 <outlet property="characterImageView" destination="U69-Ig-KLb" id="wMs-s5-TFt"/>
                 <outlet property="characterNameLabel" destination="3vb-d1-WGu" id="6kS-wl-jne"/>
+                <outlet property="loadingIndicator" destination="PLw-1X-5ZS" id="gs6-6v-LLP"/>
             </connections>
             <point key="canvasLocation" x="143.5114503816794" y="3.8732394366197185"/>
         </tableViewCell>
