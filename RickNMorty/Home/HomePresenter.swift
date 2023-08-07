@@ -25,5 +25,7 @@ final class HomePresenter: HomePresentationLogic {
         viewController?.displayCharacters(viewModels: charactersViewModel)
     }
 
-    func presentError(message _: String) {}
+    func presentError(message: String) {
+        viewController?.displayErrorMessage(message)
+    }
 }
