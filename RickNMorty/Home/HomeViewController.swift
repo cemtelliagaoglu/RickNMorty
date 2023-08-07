@@ -87,5 +87,7 @@ extension HomeViewController: HomeDisplayLogic {
         }
     }
 
-    func displayErrorMessage(_: String) {}
+    func displayErrorMessage(_ message: String) {
+        showError(with: message)
+    }
 }
