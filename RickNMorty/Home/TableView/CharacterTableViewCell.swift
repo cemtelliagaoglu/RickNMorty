@@ -8,9 +8,8 @@
 import UIKit
 
 class CharacterTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var characterImageView: UIImageView!
-    @IBOutlet weak var characterNameLabel: UILabel!
+    @IBOutlet var characterImageView: UIImageView!
+    @IBOutlet var characterNameLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,5 +20,4 @@ class CharacterTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
-    
 }

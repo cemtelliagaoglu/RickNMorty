@@ -11,12 +11,9 @@ protocol HomeBusinessLogic: AnyObject {
     func loadData()
 }
 
-protocol HomeDataStore: AnyObject {
-    
-}
+protocol HomeDataStore: AnyObject {}
 
 final class HomeInteractor: HomeBusinessLogic, HomeDataStore {
-    
     var presenter: HomePresentationLogic?
     var worker: HomeWorkingLogic = HomeWorker()
 
@@ -25,12 +22,11 @@ final class HomeInteractor: HomeBusinessLogic, HomeDataStore {
         // if not existing, request all characters
         worker.sendRequestForAllCharacters { [weak self] result in
             switch result {
-            case .success(let response):
+            case let .success(response):
                 self?.presenter?.presentCharacters(model: response)
-            case .failure(let error):
+            case let .failure(error):
                 self?.presenter?.presentError(message: error.customMessage)
             }
         }
     }
-    
 }

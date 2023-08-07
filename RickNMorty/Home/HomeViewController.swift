@@ -13,16 +13,16 @@ protocol HomeDisplayLogic: AnyObject {
 }
 
 final class HomeViewController: UIViewController {
+    // MARK: - Properties
 
-    //MARK: - Properties
-
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
 
     var interactor: HomeBusinessLogic?
     var router: (HomeRoutingLogic & HomeDataPassing)?
     private var viewModel: [Home.Case.ViewModel]?
     private let characterCellIdentifier = "characterCell"
-    //MARK: - Lifecycle
+
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,14 +34,14 @@ final class HomeViewController: UIViewController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
-    
-    //MARK: - Methods
-    
+
+    // MARK: - Methods
+
     private func setup() {
         let viewController = self
         let interactor = HomeInteractor()
@@ -62,10 +62,10 @@ final class HomeViewController: UIViewController {
     }
 }
 
-    //MARK: - TableView
+// MARK: - TableView
 
-extension HomeViewController: UITableViewDataSource,UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return viewModel?.count ?? 0
     }
 
@@ -77,7 +77,8 @@ extension HomeViewController: UITableViewDataSource,UITableViewDelegate {
     }
 }
 
-    //MARK: - DisplayLogic
+// MARK: - DisplayLogic
+
 extension HomeViewController: HomeDisplayLogic {
     func displayCharacters(viewModels: [Home.Case.ViewModel]) {
         DispatchQueue.main.async { [weak self] in
@@ -85,7 +86,6 @@ extension HomeViewController: HomeDisplayLogic {
             self?.tableView.reloadData()
         }
     }
-    func displayErrorMessage(_ message: String) {
-        
-    }
+
+    func displayErrorMessage(_: String) {}
 }

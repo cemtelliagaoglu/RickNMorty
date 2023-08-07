@@ -26,11 +26,11 @@ extension CharacterEndpoint: Endpoint {
         .get
     }
 
-    public var header: [String : String]? {
+    public var header: [String: String]? {
         nil
     }
 
-    public var body: [String : String]? {
+    public var body: [String: String]? {
         nil
     }
 

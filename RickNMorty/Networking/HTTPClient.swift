@@ -60,7 +60,6 @@ public extension HTTPClient {
         .resume()
     }
 
-    
     private func prepareURLComponents(
         with endpoint: Endpoint
     ) -> URLComponents {
