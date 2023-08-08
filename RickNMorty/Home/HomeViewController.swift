@@ -74,7 +74,7 @@ final class HomeViewController: UIViewController {
         ]
         appearance.backgroundColor = UIColor(named: "barBackgroundColor")
         navigationItem.backButtonTitle = ""
-        navBar?.tintColor = .systemGreen
+        navBar?.tintColor = UIColor(named: "textColor")
         navBar?.standardAppearance = appearance
         navBar?.scrollEdgeAppearance = appearance
     }
