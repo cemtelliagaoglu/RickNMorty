@@ -9,6 +9,7 @@ import UIKit
 
 protocol DetailsDisplayLogic: AnyObject {
     func displayCharacter(viewModel: Details.Case.ViewModel)
+    func displayErrorMessage(_ message: String)
 }
 
 final class DetailsViewController: UIViewController {
@@ -83,5 +84,9 @@ final class DetailsViewController: UIViewController {
 extension DetailsViewController: DetailsDisplayLogic {
     func displayCharacter(viewModel: Details.Case.ViewModel) {
         self.viewModel = viewModel
+    }
+
+    func displayErrorMessage(_ message: String) {
+        showError(with: message)
     }
 }
