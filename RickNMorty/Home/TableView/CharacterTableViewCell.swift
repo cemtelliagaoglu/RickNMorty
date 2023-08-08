@@ -10,7 +10,7 @@ import UIKit
 class CharacterTableViewCell: UITableViewCell {
     @IBOutlet var characterImageView: UIImageView!
     @IBOutlet var characterNameLabel: UILabel!
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet var loadingIndicator: UIActivityIndicatorView!
 
     var viewModel: Home.Case.ViewModel? {
         didSet {
