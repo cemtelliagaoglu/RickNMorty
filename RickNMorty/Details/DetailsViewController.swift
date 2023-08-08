@@ -16,7 +16,6 @@ final class DetailsViewController: UIViewController {
     // MARK: - Properties
 
     @IBOutlet var imageView: UIImageView!
-    @IBOutlet var nameLabel: UILabel!
     @IBOutlet var locationLabel: UILabel!
     @IBOutlet var speciesLabel: UILabel!
     @IBOutlet var genderLabel: UILabel!
@@ -39,7 +38,7 @@ final class DetailsViewController: UIViewController {
         super.viewDidLoad()
         setupView()
     }
-    
+
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -71,7 +70,7 @@ final class DetailsViewController: UIViewController {
             self?.loadingIndicator.stopAnimating()
         }
         DispatchQueue.main.async { [weak self] in
-            self?.nameLabel.text = viewModel.name
+            self?.title = viewModel.name
             self?.speciesLabel.text = viewModel.species
             self?.genderLabel.text = viewModel.gender
             self?.originLabel.text = viewModel.origin
