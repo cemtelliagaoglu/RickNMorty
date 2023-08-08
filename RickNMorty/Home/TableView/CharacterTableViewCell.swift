@@ -17,7 +17,9 @@ class CharacterTableViewCell: UITableViewCell {
             guard let viewModel else { return }
             characterNameLabel.text = viewModel.name
             characterImageView.downloadImage(from: viewModel.imageURLString) {
-                self.loadingIndicator.stopAnimating()
+                DispatchQueue.main.async { [weak self] in
+                    self?.loadingIndicator.stopAnimating()
+                }
             }
         }
     }
