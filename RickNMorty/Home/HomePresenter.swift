@@ -9,6 +9,7 @@ import Foundation
 
 protocol HomePresentationLogic: AnyObject {
     func presentCharacters(model: Home.Case.Response)
+    func presentSavedCharacters(characters: [Character])
     func presentError(message: String)
 }
 
@@ -21,6 +22,16 @@ final class HomePresenter: HomePresentationLogic {
         allCharacters.forEach {
             charactersViewModel.append(.init(name: $0.name,
                                              imageURLString: $0.image))
+        }
+        viewController?.displayCharacters(viewModels: charactersViewModel)
+    }
+
+    func presentSavedCharacters(characters: [Character]) {
+        characters.forEach {
+            guard let name = $0.name,
+                  let urlString = $0.imageURLString
+            else { return }
+            charactersViewModel.append(.init(name: name, imageURLString: urlString))
         }
         viewController?.displayCharacters(viewModels: charactersViewModel)
     }
