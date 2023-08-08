@@ -59,6 +59,24 @@ final class HomeViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "CharacterTableViewCell", bundle: nil), forCellReuseIdentifier: characterCellIdentifier)
+        setupNavigationBar()
+    }
+
+    private func setupNavigationBar() {
+        title = "Rick and Morty"
+        let navBar = navigationController?.navigationBar
+        let appearance = UINavigationBarAppearance()
+        appearance.titleTextAttributes = [
+            .font: UIFont(name: "Noteworthy Bold", size: 22)!,
+            .foregroundColor: UIColor.systemGreen,
+            .strokeColor: UIColor.black,
+            .strokeWidth: -2.5,
+        ]
+        appearance.backgroundColor = UIColor(named: "barBackgroundColor")
+        navigationItem.backButtonTitle = ""
+        navBar?.tintColor = .systemGreen
+        navBar?.standardAppearance = appearance
+        navBar?.scrollEdgeAppearance = appearance
     }
 }
 
