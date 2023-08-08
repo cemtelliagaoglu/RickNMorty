@@ -27,5 +27,7 @@ final class DetailsPresenter: DetailsPresentationLogic {
             ))
     }
 
-    func presentError(error _: RequestError) {}
+    func presentError(error: RequestError) {
+        viewController?.displayErrorMessage(error.customMessage)
+    }
 }
