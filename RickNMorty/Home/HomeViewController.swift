@@ -75,6 +75,11 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         cell.viewModel = viewModel
         return cell
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        router?.routeToCharacterDetails(at: indexPath.row)
+    }
 }
 
 // MARK: - DisplayLogic
