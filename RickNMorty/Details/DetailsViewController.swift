@@ -31,9 +31,15 @@ final class DetailsViewController: UIViewController {
             updateUI()
         }
     }
+    private var characterID: Int?
 
     // MARK: - Lifecycle
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupView()
+    }
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -73,9 +79,14 @@ final class DetailsViewController: UIViewController {
         }
     }
 
-    func setCharacter(id: Int) {
+    private func setupView() {
+        guard let characterID else { return }
         loadingIndicator.startAnimating()
-        interactor?.loadCharacter(id: id)
+        interactor?.loadCharacter(id: characterID)
+    }
+
+    func setCharacter(id: Int) {
+        characterID = id
     }
 }
 
