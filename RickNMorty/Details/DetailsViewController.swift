@@ -7,7 +7,9 @@
 
 import UIKit
 
-protocol DetailsDisplayLogic: AnyObject {}
+protocol DetailsDisplayLogic: AnyObject {
+    func displayCharacter(viewModel: Details.Case.ViewModel)
+}
 
 final class DetailsViewController: UIViewController {
     // MARK: - Properties
@@ -22,6 +24,12 @@ final class DetailsViewController: UIViewController {
 
     var interactor: DetailsBusinessLogic?
     var router: (DetailsRoutingLogic & DetailsDataPassing)?
+
+    private var viewModel: Details.Case.ViewModel? {
+        didSet {
+            updateUI()
+        }
+    }
 
     // MARK: - Lifecycle
 
@@ -49,8 +57,31 @@ final class DetailsViewController: UIViewController {
         router.viewController = viewController
         router.dataStore = interactor
     }
+
+    private func updateUI() {
+        guard let viewModel else { return }
+        imageView.downloadImage(from: viewModel.imageURLString) { [weak self] in
+            self?.loadingIndicator.stopAnimating()
+        }
+        DispatchQueue.main.async { [weak self] in
+            self?.nameLabel.text = viewModel.name
+            self?.speciesLabel.text = viewModel.species
+            self?.genderLabel.text = viewModel.gender
+            self?.originLabel.text = viewModel.origin
+            self?.locationLabel.text = viewModel.location
+        }
+    }
+
+    func setCharacter(id: Int) {
+        loadingIndicator.startAnimating()
+        interactor?.loadCharacter(id: id)
+    }
 }
 
 // MARK: - DisplayLogic
 
-extension DetailsViewController: DetailsDisplayLogic {}
+extension DetailsViewController: DetailsDisplayLogic {
+    func displayCharacter(viewModel: Details.Case.ViewModel) {
+        self.viewModel = viewModel
+    }
+}
