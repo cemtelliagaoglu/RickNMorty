@@ -12,9 +12,31 @@ enum Details {
     enum Case {
         struct Request {}
 
-        struct Response {}
+        struct Response: Codable {
+            let name: String
+            let species: String
+            let gender: String
+            let origin: Origin
+            let location: Location
+            let image: String
 
-        struct ViewModel {}
+            struct Origin: Codable {
+                let name: String
+            }
+
+            struct Location: Codable {
+                let name: String
+            }
+        }
+
+        struct ViewModel {
+            let name: String
+            let species: String
+            let gender: String
+            let origin: String
+            let location: String
+            let imageURLString: String
+        }
     }
 }
 
