@@ -7,6 +7,12 @@
 
 import Foundation
 
-protocol DetailsWorkingLogic: AnyObject {}
+protocol DetailsWorkingLogic: AnyObject {
+    func sendRequestToCharacter(id: Int, completion: @escaping ((Result<Details.Case.Response, RequestError>) -> Void))
+}
 
-final class DetailsWorker: DetailsWorkingLogic {}
+final class DetailsWorker: DetailsWorkingLogic, HTTPClient {
+    func sendRequestToCharacter(id: Int, completion: @escaping ((Result<Details.Case.Response, RequestError>) -> Void)) {
+        sendRequest(endpoint: CharacterEndpoint.single(id), responseModel: Details.Case.Response.self, completion: completion)
+    }
+}
