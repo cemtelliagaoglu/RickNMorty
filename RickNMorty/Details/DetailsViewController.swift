@@ -30,6 +30,7 @@ final class DetailsViewController: UIViewController {
             updateUI()
         }
     }
+
     private var characterID: Int?
 
     // MARK: - Lifecycle

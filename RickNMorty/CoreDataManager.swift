@@ -14,7 +14,7 @@ class CoreDataManager {
 
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "RickNMorty")
-        container.loadPersistentStores(completionHandler: { storeDescription, error in
+        container.loadPersistentStores(completionHandler: { _, error in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
@@ -28,7 +28,7 @@ class CoreDataManager {
 
     private init() {}
 
-    func create<E>(type: E.Type, completion: @escaping ((Result<E, CoreDataError>) -> Void)) {
+    func create<E>(type _: E.Type, completion: @escaping ((Result<E, CoreDataError>) -> Void)) {
         do {
             guard let object = NSEntityDescription.insertNewObject(forEntityName: "\(E.self)", into: context) as? E
             else {
@@ -42,7 +42,7 @@ class CoreDataManager {
         }
     }
 
-    func read<E>(type: E.Type, completion: @escaping ((Result<[E], CoreDataError>) -> Void)) {
+    func read<E>(type _: E.Type, completion: @escaping ((Result<[E], CoreDataError>) -> Void)) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "\(E.self)")
         do {
             guard let objects = try context.fetch(fetchRequest) as? [E]
@@ -77,4 +77,3 @@ class CoreDataManager {
         }
     }
 }
-
