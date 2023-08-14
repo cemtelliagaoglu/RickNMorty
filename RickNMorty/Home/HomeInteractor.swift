@@ -9,6 +9,7 @@ import Foundation
 
 protocol HomeBusinessLogic: AnyObject {
     func loadData()
+    func nextPage()
 }
 
 protocol HomeDataStore: AnyObject {
@@ -21,6 +22,7 @@ final class HomeInteractor: HomeBusinessLogic, HomeDataStore {
     var worker: HomeWorkingLogic = HomeWorker()
     var allCharacters: [Home.Case.Response.Result]?
     var savedCharacters: [Character]?
+    private var nextPageURL = "https://rickandmortyapi.com/api/character?page=2"
 
     func loadData() {
         // check if exists in coredata
@@ -28,6 +30,7 @@ final class HomeInteractor: HomeBusinessLogic, HomeDataStore {
             switch result {
             case let .success(response):
                 self?.savedCharacters = response
+                self?.appendSavedCharactersToAll()
                 if response.isEmpty {
                     self?.sendRequest()
                 } else {
@@ -58,5 +61,41 @@ final class HomeInteractor: HomeBusinessLogic, HomeDataStore {
                 self?.presenter?.presentError(message: error.customMessage)
             }
         }
+    }
+
+    func nextPage() {
+        worker.sendRequestForNext(urlString: nextPageURL) { [weak self] result in
+            switch result {
+            case let .success(response):
+                var tempCharacters = self?.allCharacters ?? [Home.Case.Response.Result]()
+                for character in response.results {
+                    tempCharacters.append(character)
+                }
+                self?.allCharacters = tempCharacters
+                guard let nextURL = response.info.next else {
+                    self?.presenter?.presentCharacters(model: response, isLastPage: true)
+                    return
+                }
+                self?.nextPageURL = nextURL
+                self?.presenter?.presentCharacters(model: response, isLastPage: false)
+            case let .failure(error):
+                self?.presenter?.presentError(message: error.customMessage)
+            }
+        }
+    }
+
+    private func appendSavedCharactersToAll() {
+        guard let savedCharacters else { return }
+        var tempCharacters = allCharacters ?? [Home.Case.Response.Result]()
+        savedCharacters.forEach {
+            guard let id = Int($0.characterID),
+                  let name = $0.name,
+                  let image = $0.imageURLString
+            else { return }
+            tempCharacters.append(.init(id: id,
+                                        name: name,
+                                        image: image))
+        }
+        allCharacters = tempCharacters
     }
 }

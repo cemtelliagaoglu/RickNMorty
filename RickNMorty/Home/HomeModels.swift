@@ -13,7 +13,13 @@ enum Home {
         struct Request {}
 
         struct Response: Codable {
+            let info: Info
             let results: [Result]
+
+            struct Info: Codable {
+                let next: String?
+                let prev: String?
+            }
 
             struct Result: Codable {
                 let id: Int

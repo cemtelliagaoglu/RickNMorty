@@ -13,6 +13,11 @@ public protocol HTTPClient {
         responseModel: T.Type,
         completion: @escaping (Result<T, RequestError>) -> Void
     )
+    func sendRequest<T: Decodable>(
+        with urlString: String,
+        responseModel: T.Type,
+        completion: @escaping (Result<T, RequestError>) -> Void
+    )
 }
 
 public extension HTTPClient {
@@ -34,8 +39,22 @@ public extension HTTPClient {
         if let body = endpoint.body {
             request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
         }
+        resumeDataTask(with: request, responseModel: responseModel, completion: completion)
+    }
 
-        URLSession.shared.dataTask(with: request) { data, response, _ in
+    func sendRequest<T: Decodable>(
+        with urlString: String,
+        responseModel: T.Type,
+        completion: @escaping (Result<T, RequestError>) -> Void) {
+        guard let url = URL(string: urlString) else {
+            completion(.failure(.invalidURL))
+            return
+        }
+        resumeDataTask(with: .init(url: url), responseModel: responseModel, completion: completion)
+    }
+
+    private func resumeDataTask<T: Decodable>(with urlRequest: URLRequest, responseModel: T.Type, completion: @escaping ((Result<T, RequestError>) -> Void)) {
+        URLSession.shared.dataTask(with: urlRequest) { data, response, _ in
 
             do {
                 guard let response = response as? HTTPURLResponse else {

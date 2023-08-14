@@ -20,11 +20,10 @@ final class HomeRouter: HomeRoutingLogic, HomeDataPassing {
     var dataStore: HomeDataStore?
 
     func routeToCharacterDetails(at index: Int) {
-        guard let character = dataStore?.savedCharacters?[index] else { return }
+        guard let character = dataStore?.allCharacters?[index] else { return }
         let storyboard = UIStoryboard(name: "Details", bundle: nil)
         guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController else { return }
-        guard let id = Int(character.characterID) else { return }
-        destinationVC.setCharacter(id: id)
+        destinationVC.setCharacter(id: character.id)
         DispatchQueue.main.async { [weak self] in
             self?.viewController?.navigationController?.pushViewController(destinationVC, animated: true)
         }
