@@ -11,6 +11,7 @@ protocol HomeWorkingLogic: AnyObject {
     func sendRequestForAllCharacters(completion: @escaping ((Result<Home.Case.Response, RequestError>) -> Void))
     func checkCoreDataForCharacters(completion: @escaping ((Result<[Character], CoreDataError>) -> Void))
     func saveCharacters(characters: [Home.Case.Response.Result], completion: @escaping ((Result<[Character], CoreDataError>) -> Void))
+    func sendRequestForNext(urlString: String, completion: @escaping ((Result<Home.Case.Response, RequestError>) -> Void))
 }
 
 final class HomeWorker: HomeWorkingLogic, HTTPClient {
@@ -47,5 +48,9 @@ final class HomeWorker: HomeWorkingLogic, HTTPClient {
             }
         }
         completion(.success(tempChars))
+    }
+
+    func sendRequestForNext(urlString: String, completion: @escaping ((Result<Home.Case.Response, RequestError>) -> Void)) {
+        sendRequest(with: urlString, responseModel: Home.Case.Response.self, completion: completion)
     }
 }
