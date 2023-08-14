@@ -8,7 +8,7 @@
 import UIKit
 
 protocol HomeDisplayLogic: AnyObject {
-    func displayCharacters(viewModels: [Home.Case.ViewModel])
+    func displayCharacters(viewModels: [Home.Case.ViewModel], isLastPage: Bool)
     func displayErrorMessage(_ message: String)
 }
 
@@ -16,11 +16,13 @@ final class HomeViewController: UIViewController {
     // MARK: - Properties
 
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var nextPageLoadingIndicator: UIActivityIndicatorView!
 
     var interactor: HomeBusinessLogic?
     var router: (HomeRoutingLogic & HomeDataPassing)?
     private var viewModel: [Home.Case.ViewModel]?
     private let characterCellIdentifier = "characterCell"
+    private var isLastPage: Bool = false
 
     // MARK: - Lifecycle
 
@@ -98,15 +100,27 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         router?.routeToCharacterDetails(at: indexPath.row)
     }
+
+    func tableView(_: UITableView, willDisplay _: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let modelCount = viewModel?.count else { return }
+        if indexPath.row == modelCount - 1 {
+            if !isLastPage {
+                nextPageLoadingIndicator.startAnimating()
+                interactor?.nextPage()
+            }
+        }
+    }
 }
 
 // MARK: - DisplayLogic
 
 extension HomeViewController: HomeDisplayLogic {
-    func displayCharacters(viewModels: [Home.Case.ViewModel]) {
+    func displayCharacters(viewModels: [Home.Case.ViewModel], isLastPage: Bool) {
         DispatchQueue.main.async { [weak self] in
+            self?.isLastPage = isLastPage
             self?.viewModel = viewModels
             self?.tableView.reloadData()
+            self?.nextPageLoadingIndicator.stopAnimating()
         }
     }
 
